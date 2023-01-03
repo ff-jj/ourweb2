@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" style="height: 100%">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script src="assets/js/echarts.js"></script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+        <title>PM分析</title>
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    
+        <link rel="stylesheet" href="assets/css/fontawesome.css">
+        <link rel="stylesheet" href="assets/css/templatemo-tale-seo-agency.css">
+        <link rel="stylesheet" href="assets/css/owl.css">
+        <link rel="stylesheet" href="assets/css/animate.css">
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css"/>
+    </head>
+<body style="height: 100%; margin: 0">
+    <header class="header-area header-sticky" style="top: 1px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav" style="top: 0%;">
+                        <a href="index.html" class="logo">
+                            <img src="assets/images/c514f7606c4881d7453968100b3c00a1.png" alt="" style="max-width: 112px;">
+                        </a>  
+                        <ul class="nav" style="top: 35px;">              
+                          <li class="scroll-to-section"><a href="PH2.5.html">
+                            <img src="assets/images/返回.png" alt="">
+                          </a></li>
+                      </ul>   
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+      </header>
+    
+  <div id="container" style="width:1470px;height: 700px;background-color:white;top: 140px;"></div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+  <script src="assets/js/roma.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, 'roma', {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    var ROOT_PATH = 'https://echarts.apache.org/examples';
+    var option;
+
+    const weatherIcons = {
+  Sunny: ROOT_PATH + '/data/asset/img/weather/sunny_128.png',
+  Cloudy: ROOT_PATH + '/data/asset/img/weather/cloudy_128.png',
+  Showers: ROOT_PATH + '/data/asset/img/weather/showers_128.png'
+};
+const seriesLabel = {
+  show: true
+};
+option = {
+  title: {
+    text: '四季平均pm2.5指数'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  legend: {
+    data: ['北京', '上海', '成都']
+  },
+  grid: {
+    left: 100
+  },
+  toolbox: {
+    show: true,
+    feature: {
+      saveAsImage: {}
+    }
+  },
+  xAxis: {
+    type: 'value',
+    name: 'Days',
+    axisLabel: {
+      formatter: '{value}'
+    }
+  },
+  yAxis: {
+    type: 'category',
+    inverse: true,
+    data: ['Spring', 'Summer', 'Autumn', 'Winter'],/*侧边坐标*/
+    axisLabel: {
+      formatter: function (value) {
+        return '{' + value + '| }\n{value|' + value + '}';
+      },
+      margin: 20,
+      rich: {
+        value: {
+          lineHeight: 30,
+          align: 'center'
+        },
+        Spring: {
+          height: 40,
+          align: 'center',
+          backgroundColor: {
+            image: '春兰2.png'
+          }
+        },
+        Summer: {
+          height: 40,
+          align: 'center',
+          backgroundColor: {
+            image:'夏荷2.png'
+          }
+        },
+        Autumn: {
+          height: 40,
+          align: 'center',
+          backgroundColor: {
+            image:'秋菊2.png'
+          }
+        },
+        Winter: {
+          height: 40,
+          align: 'center',
+          backgroundColor: {
+            image:'冬梅2.png'
+          }
+        }
+      }
+    }
+  },
+  series: [
+    {
+      name: '北京',
+      type: 'bar',
+      data: [33.7, 33.4, 34.3,49.8],/*数据*/
+      label: seriesLabel,
+      markPoint: {
+        symbolSize: 1,
+        symbolOffset: [0, '50%'],
+        label: {
+          formatter: '{a|{a}\n}{b|{b} }{c|{c}}',
+          backgroundColor: 'rgb(242,242,242)',
+          borderColor: '#aaa',
+          borderWidth: 1,
+          borderRadius: 4,
+          padding: [4, 10],
+          lineHeight: 26,
+          // shadowBlur: 5,
+          // shadowColor: '#000',
+          // shadowOffsetX: 0,
+          // shadowOffsetY: 1,
+          position: 'right',
+          distance: 20,
+          rich: {
+            a: {
+              align: 'center',
+              color: '#fff',
+              fontSize: 18,
+              textShadowBlur: 2,
+              textShadowColor: '#000',
+              textShadowOffsetX: 0,
+              textShadowOffsetY: 1,
+              textBorderColor: '#333',
+              textBorderWidth: 2
+            },
+            b: {
+              color: '#333'
+            },
+            c: {
+              color: '#ff8811',
+              textBorderColor: '#000',
+              textBorderWidth: 1,
+              fontSize: 22
+            }
+          }
+        },
+        data: [
+          { type: 'max', name: 'max days: ' },
+          { type: 'min', name: 'min days: ' }
+        ]
+      }
+    },
+    {
+      name: '上海',
+      type: 'bar',
+      label: seriesLabel,
+      data: [33, 25.5, 21.4,44.6]
+    },
+    {
+      name: '成都',
+      type: 'bar',
+      label: seriesLabel,
+      data: [51, 3, 30.3,92]
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>

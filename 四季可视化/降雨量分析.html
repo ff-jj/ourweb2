@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="assets/js/echarts.js"></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <title>降雨量分析</title>
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-tale-seo-agency.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css"/>
+</head>
+<body>
+  <header class="header-area header-sticky" style="top: 1px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav" style="top: 0%;">
+                    <a href="index.html" class="logo">
+                        <img src="assets/images/c514f7606c4881d7453968100b3c00a1.png" alt="" style="max-width: 112px;">
+                    </a>  
+                    <ul class="nav" style="top: 35px;">              
+                      <li class="scroll-to-section"><a href="降雨量.html">
+                        <img src="assets/images/返回.png" alt="">
+                      </a></li>
+                  </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+    <div id="main" style="width:1500px;height: 600px;background-color:white;top: 140px;"></div>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main' ));
+        option = {
+  title: {
+    text: '2015-2021年四季降水量'
+  },
+  tooltip: {
+    trigger: 'axis'
+  },
+  legend: {
+    data: ['春季', '夏季', '秋季', '冬季'],
+    left:200,
+    top:30
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  toolbox:{
+            top:20,
+            show:true,
+            feature:{
+                DataView:{
+                    show:true,readOnly:false
+                },
+                magicType:{
+                    show:true, type:['line','bar']
+                },
+                restore:{
+                    show:true
+                },
+                saveAsImage:{
+                    show:true
+                },
+                dataZoom:{}
+            },
+            orient:'horizontal',
+            itemSiae:30,
+            itemGap:30,
+            iconStyle:{
+                color:'white',
+                borderColor:'gray'
+            },
+            emphasis:{
+                iconStyle:{
+                    textPosition:'top',
+                    textFill:'gray',
+                    textBackgroundColor:'pink',
+                    textPadding:5
+                }
+            },
+            right:20,
+        },
+  xAxis: {
+    name:'年份',
+    nameLocation : 'end',
+    type: 'category',
+    boundaryGap: false,
+    data: ['2015', '2016', '2017', '2018', '2019', '2020', '2021']
+  },
+  yAxis: {
+    name:'降水量',
+    nameLocation : 'end',
+    type: 'value',
+    boundaryGap: false,
+    data: ['100', '150', '200', '250', '300', '350', '400','450']
+  },
+  series: [
+    {
+      name: '春季',
+      type: 'line',
+      stack: 'Total',
+      data: [120, 132, 101, 134, 90, 230, 210]
+    },
+    {
+      name: '夏季',
+      type: 'line',
+      stack: 'Total',
+      data: [220, 182, 191, 234, 290, 330, 310]
+    },
+    {
+      name: '秋季',
+      type: 'line',
+      stack: 'Total',
+      data: [150, 232, 201, 154, 190, 330, 410]
+    },
+    {
+      name: '冬季',
+      type: 'line',
+      stack: 'Total',
+      data: [320, 332, 301, 334, 390, 330, 320]
+    },
+  ]
+};
+        myChart.setOption(option);
+      </script>
+</body>
+<html>
